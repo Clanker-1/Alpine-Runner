@@ -1,4 +1,4 @@
-# Mountain-Goat-Game
+# Alpine Runner
 A dinosaur game clone with a different theme with a mountain goat as the dinosaur, a mountain as the cactus, and an eagle as the teradactal.
 
 
