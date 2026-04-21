@@ -1,26 +1,18 @@
 public class Mountain {
 
-    private float positionX;
-    private float width;
+    public int x;
+    public int y;
 
-    public Mountain(float startX, float width) {
-        this.positionX = startX;
-        this.width = width;
+    public Mountain(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void update() {
-        positionX -= 0.7f;
+        x -= 8;
 
-        if (positionX < -5) {
-            positionX = 30;
+        if (x < -50) {
+            x = 850;
         }
-    }
-
-    public float getPositionX() {
-        return positionX;
-    }
-
-    public float getWidth() {
-        return width;
     }
 }
