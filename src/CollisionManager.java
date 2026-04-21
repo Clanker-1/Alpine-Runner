@@ -1,12 +1,12 @@
 public class CollisionManager {
 
-    public boolean checkCollision(Goat goat, Mountain mountain) {
-        return Math.abs(goat.getPositionX() - mountain.getPositionX()) < 1 &&
-               goat.getPositionY() <= 0.1;
+    public static boolean hitMountain(Goat g, Mountain m) {
+        return g.x + 40 > m.x && g.x < m.x + 40 &&
+               300 - g.y - 40 < 260 + 40;
     }
 
-    public boolean checkEnemyCollision(Goat goat, Eagle eagle) {
-        return Math.abs(goat.getPositionX() - eagle.getPositionX()) < 1 &&
-               Math.abs(goat.getPositionY() - eagle.getPositionY()) < 1;
+    public static boolean hitEagle(Goat g, Eagle e) {
+        return g.x + 40 > e.x && g.x < e.x + 30 &&
+               300 - g.y - 40 < 200 - e.y + 30;
     }
 }
