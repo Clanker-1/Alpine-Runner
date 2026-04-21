@@ -1,44 +1,44 @@
 public class Game {
 
-    private int score;
-    private boolean isRunning;
+    public int score;
+    public boolean isRunning;
 
-    private Goat goat;
-    private Mountain mountain;
-    private Eagle eagle;
+    public Goat goat;
+    public Mountain mountain;
+    public Eagle eagle;
 
     private InputHandler inputHandler;
-    private Render render;
     private CollisionManager collisionManager;
+
+    private GameWindow window;
 
     public Game() {
         this.score = 0;
         this.isRunning = false;
 
-        this.goat = new Goat(0, 0);
-        this.mountain = new Mountain(20, 5);
-        this.eagle = new Eagle(35, 4);
+        this.goat = new Goat(50, 0);
+        this.mountain = new Mountain(600, 40);
+        this.eagle = new Eagle(700, 80);
 
         this.inputHandler = new InputHandler();
-        this.render = new Render();
         this.collisionManager = new CollisionManager();
+
+        this.window = new GameWindow(this);
     }
 
     public void start() {
         isRunning = true;
-        System.out.println("Game started!");
 
         while (isRunning) {
             update();
+            window.repaint();
 
             try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                Thread.sleep(30);
+            } catch (Exception e) {}
         }
 
-        System.out.println("Game over! Final score: " + score);
+        System.out.println("Game Over! Score: " + score);
     }
 
     public void update() {
@@ -51,16 +51,8 @@ public class Game {
         if (collisionManager.checkCollision(goat, mountain) ||
             collisionManager.checkEnemyCollision(goat, eagle)) {
             isRunning = false;
-            return;
         }
 
         score++;
-
-        render.renderGoat(goat);
-        render.renderMountain(mountain);
-        render.renderEagle(eagle);
-        render.renderScore(score);
-
-        System.out.println("------------------------");
     }
 }
