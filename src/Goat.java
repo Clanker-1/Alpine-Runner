@@ -1,45 +1,30 @@
 public class Goat {
 
-    private float positionX;
-    private float positionY;
-    private float velocityY;
-    private boolean isJumping;
+    public int x;
+    public int y;
+    private double velocityY = 0;
 
-    private final float GRAVITY = -0.5f;
-    private final float JUMP_STRENGTH = 5f;
+    private final double GRAVITY = -0.6;
+    private final double JUMP_FORCE = 12;
 
-    public Goat(float startX, float startY) {
-        this.positionX = startX;
-        this.positionY = startY;
-        this.velocityY = 0;
-        this.isJumping = false;
+    public Goat(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void jump() {
-        if (!isJumping) {
-            velocityY = JUMP_STRENGTH;
-            isJumping = true;
+        if (y == 0) {
+            velocityY = JUMP_FORCE;
         }
     }
 
     public void update() {
-        positionX += 0.5f;
-
         velocityY += GRAVITY;
-        positionY += velocityY;
+        y += velocityY;
 
-        if (positionY <= 0) {
-            positionY = 0;
+        if (y < 0) {
+            y = 0;
             velocityY = 0;
-            isJumping = false;
         }
-    }
-
-    public float getPositionX() {
-        return positionX;
-    }
-
-    public float getPositionY() {
-        return positionY;
     }
 }
