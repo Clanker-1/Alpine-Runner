@@ -1,40 +1,42 @@
 public class Game {
 
-    public int score;
-    public boolean isRunning;
-
     public Goat goat;
     public Mountain mountain;
     public Eagle eagle;
 
-    private InputHandler inputHandler;
-    private CollisionManager collisionManager;
+    public int score = 0;
+    public boolean running = true;
 
     private GameWindow window;
 
     public Game() {
-        this.score = 0;
-        this.isRunning = false;
+        goat = new Goat(100, 0);          // goat stays in place horizontally
+        mountain = new Mountain(800, 300);
+        eagle = new Eagle(900, 200);
 
-        this.goat = new Goat(50, 0);
-        this.mountain = new Mountain(600, 40);
-        this.eagle = new Eagle(700, 80);
-
-        this.inputHandler = new InputHandler();
-        this.collisionManager = new CollisionManager();
-
-        this.window = new GameWindow(this);
+        window = new GameWindow(this);
     }
 
     public void start() {
-        isRunning = true;
+        long lastTime = System.nanoTime();
+        double nsPerUpdate = 1_000_000_000.0 / 60.0; // 60 FPS
 
-        while (isRunning) {
-            update();
+        double delta = 0;
+
+        while (running) {
+            long now = System.nanoTime();
+            delta += (now - lastTime) / nsPerUpdate;
+            lastTime = now;
+
+            while (delta >= 1) {
+                update();
+                delta--;
+            }
+
             window.repaint();
 
             try {
-                Thread.sleep(30);
+                Thread.sleep(5);
             } catch (Exception e) {}
         }
 
@@ -42,17 +44,15 @@ public class Game {
     }
 
     public void update() {
-        inputHandler.listenForJump(goat);
-
         goat.update();
         mountain.update();
         eagle.update();
 
-        if (collisionManager.checkCollision(goat, mountain) ||
-            collisionManager.checkEnemyCollision(goat, eagle)) {
-            isRunning = false;
-        }
-
         score++;
+
+        if (CollisionManager.hitMountain(goat, mountain) ||
+            CollisionManager.hitEagle(goat, eagle)) {
+            running = false;
+        }
     }
 }
