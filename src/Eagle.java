@@ -1,27 +1,19 @@
 public class Eagle {
 
-    private float positionX;
-    private float positionY;
+    public int x;
+    public int y;
 
-    public Eagle(float startX, float startY) {
-        this.positionX = startX;
-        this.positionY = startY;
+    public Eagle(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void update() {
-        positionX -= 1.0f;
+        x -= 10;
 
-        if (positionX < -5) {
-            positionX = 40;
-            positionY = 3 + (float)(Math.random() * 5);
+        if (x < -50) {
+            x = 900;
+            y = 100 + (int)(Math.random() * 80);
         }
-    }
-
-    public float getPositionX() {
-        return positionX;
-    }
-
-    public float getPositionY() {
-        return positionY;
     }
 }
