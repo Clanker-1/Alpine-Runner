@@ -2,7 +2,7 @@
 A dinosaur game clone with a different theme with a mountain goat as the dinosaur, a mountain as the cactus, and an eagle as the teradactal.
 
 ## Logo
-![ClassDiagram.png]([https://github.com/Clanker-1/Mountain-Goat-Game/blob/main/images/ClassDiagram.png](https://github.com/Clanker-1/Alpine-Runner/blob/main/images/Logo.png))
+![ClassDiagram.png]((https://github.com/Clanker-1/Alpine-Runner/blob/main/images/Logo.png))
 
 
 ## Class Diagram
