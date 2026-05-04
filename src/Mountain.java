@@ -5,8 +5,8 @@ public class Mountain {
     float positionX;
     int speed;
 
-    public Mountain(float startX, int speed) {
-        this.positionX = startX;
+    public Mountain(float x, int speed) {
+        this.positionX = x;
         this.speed = speed;
     }
 
@@ -17,10 +17,10 @@ public class Mountain {
     public void draw(Graphics g) {
         g.setColor(Color.GRAY);
 
-        int[] xPoints = {(int) positionX, (int) positionX + 20, (int) positionX + 40};
-        int[] yPoints = {330, 280, 330};
+        int[] x = {(int) positionX, (int) positionX + 20, (int) positionX + 40};
+        int[] y = {330, 280, 330};
 
-        g.fillPolygon(xPoints, yPoints, 3);
+        g.fillPolygon(x, y, 3);
     }
 
     public Rectangle getBounds() {
