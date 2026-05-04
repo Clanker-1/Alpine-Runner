@@ -6,6 +6,8 @@ public class Goat {
     float positionY = 300;
     float velocityY = 0;
 
+    final int GROUND_Y = 300;
+
     boolean isJumping = false;
 
     public void jump() {
@@ -16,24 +18,23 @@ public class Goat {
     }
 
     public void update() {
-        velocityY += 0.6;
+        velocityY += 0.8; // stronger gravity
         positionY += velocityY;
 
-        if (positionY >= 300) {
-            positionY = 300;
+        // snap EXACTLY to ground
+        if (positionY >= GROUND_Y) {
+            positionY = GROUND_Y;
+            velocityY = 0;
             isJumping = false;
         }
     }
 
     public void draw(Graphics g) {
-        // body
         g.setColor(Color.WHITE);
         g.fillRect((int) positionX, (int) positionY, 30, 20);
 
-        // head
         g.fillOval((int) positionX + 20, (int) positionY - 10, 15, 15);
 
-        // legs
         g.setColor(Color.BLACK);
         g.drawLine((int) positionX + 5, (int) positionY + 20, (int) positionX + 5, (int) positionY + 30);
         g.drawLine((int) positionX + 20, (int) positionY + 20, (int) positionX + 20, (int) positionY + 30);
