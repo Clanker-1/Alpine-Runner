@@ -3,23 +3,23 @@ import java.awt.*;
 public class Eagle {
 
     float positionX;
-    float positionY = 250;
+    float positionY = 230;
+    int speed;
 
-    public Eagle(float startX) {
+    public Eagle(float startX, int speed) {
         this.positionX = startX;
+        this.speed = speed + 2;
     }
 
     public void update() {
-        positionX -= 7;
+        positionX -= speed;
     }
 
     public void draw(Graphics g) {
         g.setColor(Color.BLACK);
 
-        // body
         g.fillOval((int) positionX, (int) positionY, 25, 15);
 
-        // wings
         g.drawLine((int) positionX, (int) positionY,
                 (int) positionX - 10, (int) positionY - 10);
 
