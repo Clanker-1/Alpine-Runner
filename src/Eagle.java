@@ -6,44 +6,41 @@ public class Eagle {
     float positionY = 230;
     int speed;
 
-    int flapFrame = 0;
-    int flapCounter = 0;
+    int frame = 0;
+    int counter = 0;
 
-    public Eagle(float startX, int speed) {
-        this.positionX = startX;
+    public Eagle(float x, int speed) {
+        this.positionX = x;
         this.speed = speed + 2;
     }
 
     public void update() {
         positionX -= speed;
 
-        // animation
-        flapCounter++;
-        if (flapCounter > 8) {
-            flapFrame = (flapFrame + 1) % 2;
-            flapCounter = 0;
+        counter++;
+        if (counter > 8) {
+            frame = (frame + 1) % 2;
+            counter = 0;
         }
     }
 
     public void draw(Graphics g) {
         g.setColor(Color.BLACK);
 
-        // body
         g.fillOval((int) positionX, (int) positionY, 25, 15);
 
-        // wings
-        if (flapFrame == 0) {
+        if (frame == 0) {
             g.drawLine((int) positionX, (int) positionY,
-                       (int) positionX - 10, (int) positionY - 10);
+                    (int) positionX - 10, (int) positionY - 10);
 
             g.drawLine((int) positionX + 25, (int) positionY,
-                       (int) positionX + 35, (int) positionY - 10);
+                    (int) positionX + 35, (int) positionY - 10);
         } else {
             g.drawLine((int) positionX, (int) positionY,
-                       (int) positionX - 10, (int) positionY + 5);
+                    (int) positionX - 10, (int) positionY + 5);
 
             g.drawLine((int) positionX + 25, (int) positionY,
-                       (int) positionX + 35, (int) positionY + 5);
+                    (int) positionX + 35, (int) positionY + 5);
         }
     }
 
