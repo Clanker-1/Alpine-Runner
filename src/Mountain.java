@@ -24,6 +24,6 @@ public class Mountain {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) positionX, 280, 40, 50);
+        return new Rectangle((int) positionX + 10, 290, 20, 40);
     }
 }
