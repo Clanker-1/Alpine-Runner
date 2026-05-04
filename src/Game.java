@@ -18,6 +18,10 @@ public class Game extends JPanel implements Runnable {
     CollisionManager collisionManager;
     InputHandler input;
 
+    // NEW: difficulty variables
+    int gameSpeed = 5;
+    int spawnTimer = 0;
+
     public Game() {
         initGame();
         setFocusable(true);
@@ -40,9 +44,13 @@ public class Game extends JPanel implements Runnable {
 
     public void reset() {
         score = 0;
+        gameSpeed = 5;
+        spawnTimer = 0;
+
         mountains.clear();
         eagles.clear();
         player = new Goat();
+
         isRunning = true;
     }
 
@@ -51,17 +59,32 @@ public class Game extends JPanel implements Runnable {
 
         player.update();
 
-        if (Math.random() < 0.02) {
-            mountains.add(new Mountain(800));
+        // Increase difficulty over time
+        if (score % 500 == 0) {
+            gameSpeed++;
         }
 
-        if (Math.random() < 0.01) {
-            eagles.add(new Eagle(800));
+        spawnTimer++;
+
+        // SPAWN CONTROL (prevents impossible stacks)
+        if (spawnTimer > 60) {
+            mountains.add(new Mountain(800, gameSpeed));
+            spawnTimer = 0;
         }
 
-        mountains.forEach(Mountain::update);
-        eagles.forEach(Eagle::update);
+        if (spawnTimer > 90) {
+            eagles.add(new Eagle(800, gameSpeed));
+        }
 
+        for (Mountain m : mountains) {
+            m.update();
+        }
+
+        for (Eagle e : eagles) {
+            e.update();
+        }
+
+        // Collision
         for (Mountain m : mountains) {
             if (collisionManager.checkCollision(player, m)) {
                 isRunning = false;
@@ -95,12 +118,13 @@ public class Game extends JPanel implements Runnable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Background
-        g.setColor(new Color(135, 206, 235)); // sky
+        // background
+        g.setColor(new Color(135, 206, 235));
         g.fillRect(0, 0, getWidth(), getHeight());
 
+        // ground
         g.setColor(Color.DARK_GRAY);
-        g.fillRect(0, 350, getWidth(), 50); // ground
+        g.fillRect(0, 330, getWidth(), 70);
 
         if (!hasStarted) {
             g.setColor(Color.BLACK);
