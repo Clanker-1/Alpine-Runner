@@ -1,7 +1,7 @@
 # Alpine Runner
 A dinosaur game clone with a different theme with a mountain goat as the dinosaur, a mountain as the cactus, and an eagle as the teradactal.
 
-# What Is Needed To Run The Game
+## What Is Needed To Run The Game
 
 
 ## Logo
@@ -18,16 +18,16 @@ A dinosaur game clone with a different theme with a mountain goat as the dinosau
 ## Mockup
 ![ClassDiagram.png](https://github.com/Clanker-1/Mountain-Goat-Game/blob/main/images/Mockup.png)
 
-## Purpose
+### Purpose
 A fun game to play when bored or when you have nothing else to do.
 
-## Target User
+### Target User
 People who are bored. 
 
-## Program Structure
+### Program Structure
 List the main classes or components you expect to create.
 
-## Challenges
+### Challenges
 Making all of the collisions work together.
 
 Implementing highscoer.
