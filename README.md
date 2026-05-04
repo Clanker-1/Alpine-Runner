@@ -26,3 +26,5 @@ List the main classes or components you expect to create.
 
 ## Challenges
 Making all of the collisions work together.
+Implementing highscoer.
+
