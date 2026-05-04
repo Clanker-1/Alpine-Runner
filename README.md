@@ -7,6 +7,9 @@ This Java Swing game requires the JDK (download from oracle.com/java). In a term
 ## Logo
 ![ClassDiagram.png](https://github.com/Clanker-1/Alpine-Runner/blob/main/images/Logo.png)
 
+## Logo
+![ClassDiagram.png]()
+
 
 ## Class Diagram
 ![ClassDiagram.png](https://github.com/Clanker-1/Mountain-Goat-Game/blob/main/images/ClassDiagram.png)
