@@ -1,9 +1,6 @@
 # Alpine Runner
 A dinosaur game clone with a different theme with a mountain goat as the dinosaur, a mountain as the cactus, and an eagle as the teradactal.
 
-## What Is Needed To Run The Game
-
-
 ## Logo
 ![ClassDiagram.png](https://github.com/Clanker-1/Alpine-Runner/blob/main/images/Logo.png)
 
